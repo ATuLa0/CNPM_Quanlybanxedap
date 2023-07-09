@@ -1,0 +1,12 @@
+﻿.sidebar {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+}
+
+@media (max-width: 767px) {
+    .sidebar {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
