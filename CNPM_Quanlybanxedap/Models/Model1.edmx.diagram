@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c08220c5e0c744e8acd429eebed8c08b" Name="Diagram1">
+        <EntityTypeShape EntityType="qlibanxedapModel.BAOHANH" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="qlibanxedapModel.BAOTRI" Width="1.5" PointX="8.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="qlibanxedapModel.CHITIETHOADON" Width="1.5" PointX="8.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="qlibanxedapModel.CHITIETPHIEUNHAP" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="qlibanxedapModel.CHUCVU" Width="1.5" PointX="0.625" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="qlibanxedapModel.DANGKYBAOTRI" Width="1.5" PointX="8.25" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="qlibanxedapModel.HOADON" Width="1.5" PointX="6" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="qlibanxedapModel.KHACHHANG" Width="1.5" PointX="3.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="qlibanxedapModel.KHUYENMAI" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qlibanxedapModel.NHACUNGCAP" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="qlibanxedapModel.NHANVIEN" Width="1.5" PointX="2.875" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="qlibanxedapModel.PHIEUNHAP" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qlibanxedapModel.TONKHO" Width="1.5" PointX="0.625" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="qlibanxedapModel.XE" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <AssociationConnector Association="qlibanxedapModel.FK__BAOHANH__MaKH__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="qlibanxedapModel.FK__BAOHANH__MaXe__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="qlibanxedapModel.FK__BAOTRI__MaHD__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="qlibanxedapModel.FK__BAOTRI__MaXe__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="qlibanxedapModel.FK__CHITIETHOA__MaHD__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="qlibanxedapModel.FK__CHITIETHOA__MaXE__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="qlibanxedapModel.FK__CHITIETPHI__MaPN__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="qlibanxedapModel.FK__CHITIETPHI__MaXe__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="qlibanxedapModel.FK__NHANVIEN__MaCV__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="qlibanxedapModel.FK__DANGKYBAOT__MaHD__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="qlibanxedapModel.FK__DANGKYBAOT__MaXe__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="qlibanxedapModel.FK__HOADON__MaKH__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="qlibanxedapModel.FK__HOADON__MaNV__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="qlibanxedapModel.FK__PHIEUNHAP__MaNCC__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="qlibanxedapModel.FK__XE__MaNCC__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="qlibanxedapModel.FK__TONKHO__MaXe__4AB81AF0" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
