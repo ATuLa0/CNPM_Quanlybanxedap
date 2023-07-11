@@ -18,6 +18,7 @@ namespace CNPM_Quanlybanxedap.Models
         public PHIEUNHAP()
         {
             this.CHITIETPHIEUNHAPs = new HashSet<CHITIETPHIEUNHAP>();
+            this.CHITIETPHIEUNHAPs1 = new HashSet<CHITIETPHIEUNHAP>();
         }
     
         public int MaPN { get; set; }
@@ -28,6 +29,9 @@ namespace CNPM_Quanlybanxedap.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETPHIEUNHAP> CHITIETPHIEUNHAPs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CHITIETPHIEUNHAP> CHITIETPHIEUNHAPs1 { get; set; }
         public virtual NHACUNGCAP NHACUNGCAP { get; set; }
+        public virtual NHACUNGCAP NHACUNGCAP1 { get; set; }
     }
 }

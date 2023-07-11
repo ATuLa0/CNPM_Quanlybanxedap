@@ -14,13 +14,14 @@ namespace CNPM_Quanlybanxedap.Models
     
     public partial class CHITIETHOADON
     {
-        public int MaCTDT { get; set; }
-        public Nullable<int> MaHD { get; set; }
-        public Nullable<int> MaXE { get; set; }
+        public int MaHD { get; set; }
+        public int MaXE { get; set; }
         public Nullable<int> SoLuong { get; set; }
         public Nullable<double> DonGia { get; set; }
     
         public virtual HOADON HOADON { get; set; }
+        public virtual HOADON HOADON1 { get; set; }
         public virtual XE XE { get; set; }
+        public virtual XE XE1 { get; set; }
     }
 }

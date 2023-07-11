@@ -18,6 +18,7 @@ namespace CNPM_Quanlybanxedap.Models
         public NHANVIEN()
         {
             this.HOADONs = new HashSet<HOADON>();
+            this.HOADONs1 = new HashSet<HOADON>();
         }
     
         public int MaNV { get; set; }
@@ -26,12 +27,15 @@ namespace CNPM_Quanlybanxedap.Models
         public string DiaChi { get; set; }
         public Nullable<int> SoDienThoai { get; set; }
         public string Email { get; set; }
-        public string MaCV { get; set; }
         public string TenDN { get; set; }
         public string Matkhau { get; set; }
+        public string MaCV { get; set; }
     
         public virtual CHUCVU CHUCVU { get; set; }
+        public virtual CHUCVU CHUCVU1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HOADON> HOADONs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HOADON> HOADONs1 { get; set; }
     }
 }

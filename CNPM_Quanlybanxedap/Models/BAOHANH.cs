@@ -22,6 +22,8 @@ namespace CNPM_Quanlybanxedap.Models
         public string TrangThai { get; set; }
     
         public virtual KHACHHANG KHACHHANG { get; set; }
+        public virtual KHACHHANG KHACHHANG1 { get; set; }
         public virtual XE XE { get; set; }
+        public virtual XE XE1 { get; set; }
     }
 }

@@ -21,6 +21,8 @@ namespace CNPM_Quanlybanxedap.Models
         public Nullable<double> TongTien { get; set; }
     
         public virtual PHIEUNHAP PHIEUNHAP { get; set; }
+        public virtual PHIEUNHAP PHIEUNHAP1 { get; set; }
         public virtual XE XE { get; set; }
+        public virtual XE XE1 { get; set; }
     }
 }

@@ -6,9 +6,10 @@ using System.Web.Mvc;
 
 namespace CNPM_Quanlybanxedap.Controllers
 {
-    public class HomeController : Controller
+    public class CustomerController : Controller
     {
-        public ActionResult TrangChu()
+        // GET: Customer
+        public ActionResult Index()
         {
             return View();
         }
