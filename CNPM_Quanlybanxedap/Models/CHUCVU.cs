@@ -18,7 +18,6 @@ namespace CNPM_Quanlybanxedap.Models
         public CHUCVU()
         {
             this.NHANVIENs = new HashSet<NHANVIEN>();
-            this.NHANVIENs1 = new HashSet<NHANVIEN>();
         }
     
         public string MaCV { get; set; }
@@ -26,7 +25,5 @@ namespace CNPM_Quanlybanxedap.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NHANVIEN> NHANVIENs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NHANVIEN> NHANVIENs1 { get; set; }
     }
 }

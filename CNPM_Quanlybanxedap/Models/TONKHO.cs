@@ -18,6 +18,5 @@ namespace CNPM_Quanlybanxedap.Models
         public Nullable<int> SoLuong { get; set; }
     
         public virtual XE XE { get; set; }
-        public virtual XE XE1 { get; set; }
     }
 }

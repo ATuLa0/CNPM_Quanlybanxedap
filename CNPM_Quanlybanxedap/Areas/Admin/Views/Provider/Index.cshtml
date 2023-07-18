@@ -1,0 +1,92 @@
+﻿@model IEnumerable<CNPM_Quanlybanxedap.Models.NHACUNGCAP>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Quản lý Nhà Cung Cấp</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới Nhà cung cấp", "CreateProvider", null, new { @class = "btn btn-primary" })
+</p>
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    Mã Nhà cung cấp
+                </th>
+                <th>
+                    Tên
+                </th>
+                <th>
+                    Địa chỉ
+                </th>
+                <th>
+                    Số điện thoại
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Thông tin mô tả
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaNCC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenNCC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DiaChi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SoDienThoai)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ThongTinMoTa)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sửa", "EditProvider", new { id = item.MaNCC }, new { @class = "btn btn-primary btn-sm" }) |
+                        <button class="btn btn-danger btn-sm" onclick="deleteProvider(@item.MaNCC)">Xóa</button>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script>
+    function deleteProvider(id) {
+        if (confirm("Bạn có chắc chắn muốn xóa nhà cung cấp này?")) {
+            $.ajax({
+                url: '/Provider/DeleteProvider/' + id,
+                type: 'POST',
+                success: function (result) {
+                    // Xử lý kết quả sau khi xóa thành công
+                    if (result.success) {
+                        // Cập nhật danh sách hoặc làm bất kỳ thao tác nào khác
+                        location.reload();
+                    } else {
+                        alert(result.message);
+                    }
+                },
+                error: function () {
+                    location.reload();
+                }
+            });
+        }
+    }
+</script>

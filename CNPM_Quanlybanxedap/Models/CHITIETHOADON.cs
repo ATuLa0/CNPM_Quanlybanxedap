@@ -20,8 +20,6 @@ namespace CNPM_Quanlybanxedap.Models
         public Nullable<double> DonGia { get; set; }
     
         public virtual HOADON HOADON { get; set; }
-        public virtual HOADON HOADON1 { get; set; }
         public virtual XE XE { get; set; }
-        public virtual XE XE1 { get; set; }
     }
 }

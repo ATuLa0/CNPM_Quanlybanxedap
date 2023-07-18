@@ -132,7 +132,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProviderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -185,6 +187,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PHIEUNHAP.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TONKHO.cs">
@@ -2167,6 +2172,9 @@
     <Content Include="Content\masterlayout\js\bootstrap.bundle.min.js.map" />
     <Content Include="Content\masterlayout\js\bootstrap.js.map" />
     <Content Include="Content\masterlayout\js\bootstrap.min.js.map" />
+    <Content Include="Areas\Admin\Views\Provider\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Provider\CreateProvider.cshtml" />
+    <Content Include="Areas\Admin\Views\Provider\EditProvider.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2288,6 +2296,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Product\" />
+    <Folder Include="Views\Provider\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -18,25 +18,19 @@ namespace CNPM_Quanlybanxedap.Models
         public NHACUNGCAP()
         {
             this.PHIEUNHAPs = new HashSet<PHIEUNHAP>();
-            this.PHIEUNHAPs1 = new HashSet<PHIEUNHAP>();
             this.XEs = new HashSet<XE>();
-            this.XEs1 = new HashSet<XE>();
         }
     
         public int MaNCC { get; set; }
         public string TenNCC { get; set; }
         public string DiaChi { get; set; }
-        public Nullable<int> SoDienThoai { get; set; }
+        public string SoDienThoai { get; set; }
         public string Email { get; set; }
         public string ThongTinMoTa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PHIEUNHAP> PHIEUNHAPs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PHIEUNHAP> PHIEUNHAPs1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<XE> XEs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<XE> XEs1 { get; set; }
     }
 }

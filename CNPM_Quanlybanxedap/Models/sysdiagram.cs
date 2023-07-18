@@ -12,14 +12,12 @@ namespace CNPM_Quanlybanxedap.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class BAOTRI
+    public partial class sysdiagram
     {
-        public int MaXe { get; set; }
-        public int MaHD { get; set; }
-        public Nullable<System.DateTime> NgayBaoTri { get; set; }
-        public string NoiDungBT { get; set; }
-    
-        public virtual HOADON HOADON { get; set; }
-        public virtual XE XE { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

@@ -83,7 +83,7 @@
           <Property Name="DiaChi" Type="nvarchar(max)" />
           <Property Name="TenDN" Type="varchar" MaxLength="50" />
           <Property Name="Matkhau" Type="varchar(max)" />
-          <Property Name="SoDienThoai" Type="int" />
+          <Property Name="SoDienThoai" Type="varchar(max)" />
           <Property Name="Email" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="KHUYENMAI">
@@ -103,7 +103,7 @@
           <Property Name="MaNCC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenNCC" Type="nvarchar(max)" />
           <Property Name="DiaChi" Type="nvarchar(max)" />
-          <Property Name="SoDienThoai" Type="int" />
+          <Property Name="SoDienThoai" Type="varchar(max)" />
           <Property Name="Email" Type="varchar(max)" />
           <Property Name="ThongTinMoTa" Type="nvarchar(max)" />
         </EntityType>
@@ -115,7 +115,7 @@
           <Property Name="TenNV" Type="nvarchar(max)" />
           <Property Name="NgaySinh" Type="date" />
           <Property Name="DiaChi" Type="nvarchar(max)" />
-          <Property Name="SoDienThoai" Type="int" />
+          <Property Name="SoDienThoai" Type="varchar(max)" />
           <Property Name="Email" Type="varchar(max)" />
           <Property Name="TenDN" Type="varchar" MaxLength="50" />
           <Property Name="Matkhau" Type="varchar(max)" />
@@ -130,6 +130,16 @@
           <Property Name="NgayNhap" Type="date" />
           <Property Name="TongTien" Type="float" />
           <Property Name="GhiChu" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="TONKHO">
           <Key>
@@ -150,20 +160,9 @@
           <Property Name="MauSac" Type="nvarchar(max)" />
           <Property Name="CDBaoHanh" Type="nvarchar(max)" />
           <Property Name="MaNCC" Type="int" />
+          <Property Name="HinhAnh" Type="varchar(max)" />
         </EntityType>
         <Association Name="FK__BAOHANH__MaKH__3F466844">
-          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
-          <End Role="BAOHANH" Type="Self.BAOHANH" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KHACHHANG">
-              <PropertyRef Name="MaKH" />
-            </Principal>
-            <Dependent Role="BAOHANH">
-              <PropertyRef Name="MaKH" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BAOHANH__MaKH__5BE2A6F2">
           <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
           <End Role="BAOHANH" Type="Self.BAOHANH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -187,31 +186,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__BAOHANH__MaXe__5CD6CB2B">
-          <End Role="XE" Type="Self.XE" Multiplicity="0..1" />
-          <End Role="BAOHANH" Type="Self.BAOHANH" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="XE">
-              <PropertyRef Name="MaXe" />
-            </Principal>
-            <Dependent Role="BAOHANH">
-              <PropertyRef Name="MaXe" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__BAOTRI__MaHD__412EB0B6">
-          <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
-          <End Role="BAOTRI" Type="Self.BAOTRI" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HOADON">
-              <PropertyRef Name="MaHD" />
-            </Principal>
-            <Dependent Role="BAOTRI">
-              <PropertyRef Name="MaHD" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BAOTRI__MaHD__5DCAEF64">
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
           <End Role="BAOTRI" Type="Self.BAOTRI" Multiplicity="*" />
           <ReferentialConstraint>
@@ -235,31 +210,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__BAOTRI__MaXe__5EBF139D">
-          <End Role="XE" Type="Self.XE" Multiplicity="1" />
-          <End Role="BAOTRI" Type="Self.BAOTRI" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="XE">
-              <PropertyRef Name="MaXe" />
-            </Principal>
-            <Dependent Role="BAOTRI">
-              <PropertyRef Name="MaXe" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__CHITIETHOA__MaHD__4316F928">
-          <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
-          <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HOADON">
-              <PropertyRef Name="MaHD" />
-            </Principal>
-            <Dependent Role="CHITIETHOADON">
-              <PropertyRef Name="MaHD" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CHITIETHOA__MaHD__5FB337D6">
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
           <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -283,31 +234,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETHOA__MaXE__60A75C0F">
-          <End Role="XE" Type="Self.XE" Multiplicity="1" />
-          <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="XE">
-              <PropertyRef Name="MaXe" />
-            </Principal>
-            <Dependent Role="CHITIETHOADON">
-              <PropertyRef Name="MaXE" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__CHITIETPHI__MaPN__44FF419A">
-          <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="1" />
-          <End Role="CHITIETPHIEUNHAP" Type="Self.CHITIETPHIEUNHAP" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PHIEUNHAP">
-              <PropertyRef Name="MaPN" />
-            </Principal>
-            <Dependent Role="CHITIETPHIEUNHAP">
-              <PropertyRef Name="MaPN" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CHITIETPHI__MaPN__619B8048">
           <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="1" />
           <End Role="CHITIETPHIEUNHAP" Type="Self.CHITIETPHIEUNHAP" Multiplicity="*" />
           <ReferentialConstraint>
@@ -331,31 +258,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETPHI__MaXe__628FA481">
-          <End Role="XE" Type="Self.XE" Multiplicity="1" />
-          <End Role="CHITIETPHIEUNHAP" Type="Self.CHITIETPHIEUNHAP" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="XE">
-              <PropertyRef Name="MaXe" />
-            </Principal>
-            <Dependent Role="CHITIETPHIEUNHAP">
-              <PropertyRef Name="MaXe" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__DANGKYBAOT__MaHD__46E78A0C">
-          <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
-          <End Role="DANGKYBAOTRI" Type="Self.DANGKYBAOTRI" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HOADON">
-              <PropertyRef Name="MaHD" />
-            </Principal>
-            <Dependent Role="DANGKYBAOTRI">
-              <PropertyRef Name="MaHD" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__DANGKYBAOT__MaHD__6383C8BA">
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
           <End Role="DANGKYBAOTRI" Type="Self.DANGKYBAOTRI" Multiplicity="*" />
           <ReferentialConstraint>
@@ -379,31 +282,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DANGKYBAOT__MaXe__6477ECF3">
-          <End Role="XE" Type="Self.XE" Multiplicity="1" />
-          <End Role="DANGKYBAOTRI" Type="Self.DANGKYBAOTRI" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="XE">
-              <PropertyRef Name="MaXe" />
-            </Principal>
-            <Dependent Role="DANGKYBAOTRI">
-              <PropertyRef Name="MaXe" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__HOADON__MaKH__48CFD27E">
-          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
-          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KHACHHANG">
-              <PropertyRef Name="MaKH" />
-            </Principal>
-            <Dependent Role="HOADON">
-              <PropertyRef Name="MaKH" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__HOADON__MaKH__656C112C">
           <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -427,31 +306,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOADON__MaNV__66603565">
-          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
-          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NHANVIEN">
-              <PropertyRef Name="MaNV" />
-            </Principal>
-            <Dependent Role="HOADON">
-              <PropertyRef Name="MaNV" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__NHANVIEN__MaCV__4AB81AF0">
-          <End Role="CHUCVU" Type="Self.CHUCVU" Multiplicity="0..1" />
-          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CHUCVU">
-              <PropertyRef Name="MaCV" />
-            </Principal>
-            <Dependent Role="NHANVIEN">
-              <PropertyRef Name="MaCV" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__NHANVIEN__MaCV__6754599E">
           <End Role="CHUCVU" Type="Self.CHUCVU" Multiplicity="0..1" />
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
           <ReferentialConstraint>
@@ -475,18 +330,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUNHAP__MaNCC__68487DD7">
-          <End Role="NHACUNGCAP" Type="Self.NHACUNGCAP" Multiplicity="0..1" />
-          <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NHACUNGCAP">
-              <PropertyRef Name="MaNCC" />
-            </Principal>
-            <Dependent Role="PHIEUNHAP">
-              <PropertyRef Name="MaNCC" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__TONKHO__MaXe__4CA06362">
           <End Role="XE" Type="Self.XE" Multiplicity="1" />
           <End Role="TONKHO" Type="Self.TONKHO" Multiplicity="0..1" />
@@ -499,31 +342,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TONKHO__MaXe__693CA210">
-          <End Role="XE" Type="Self.XE" Multiplicity="1" />
-          <End Role="TONKHO" Type="Self.TONKHO" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="XE">
-              <PropertyRef Name="MaXe" />
-            </Principal>
-            <Dependent Role="TONKHO">
-              <PropertyRef Name="MaXe" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__XE__MaNCC__4D94879B">
-          <End Role="NHACUNGCAP" Type="Self.NHACUNGCAP" Multiplicity="0..1" />
-          <End Role="XE" Type="Self.XE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NHACUNGCAP">
-              <PropertyRef Name="MaNCC" />
-            </Principal>
-            <Dependent Role="XE">
-              <PropertyRef Name="MaNCC" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__XE__MaNCC__6A30C649">
           <End Role="NHACUNGCAP" Type="Self.NHACUNGCAP" Multiplicity="0..1" />
           <End Role="XE" Type="Self.XE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -548,13 +367,10 @@
           <EntitySet Name="NHACUNGCAP" EntityType="Self.NHACUNGCAP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PHIEUNHAP" EntityType="Self.PHIEUNHAP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TONKHO" EntityType="Self.TONKHO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="XE" EntityType="Self.XE" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__BAOHANH__MaKH__3F466844" Association="Self.FK__BAOHANH__MaKH__3F466844">
-            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
-            <End Role="BAOHANH" EntitySet="BAOHANH" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BAOHANH__MaKH__5BE2A6F2" Association="Self.FK__BAOHANH__MaKH__5BE2A6F2">
             <End Role="KHACHHANG" EntitySet="KHACHHANG" />
             <End Role="BAOHANH" EntitySet="BAOHANH" />
           </AssociationSet>
@@ -562,15 +378,7 @@
             <End Role="XE" EntitySet="XE" />
             <End Role="BAOHANH" EntitySet="BAOHANH" />
           </AssociationSet>
-          <AssociationSet Name="FK__BAOHANH__MaXe__5CD6CB2B" Association="Self.FK__BAOHANH__MaXe__5CD6CB2B">
-            <End Role="XE" EntitySet="XE" />
-            <End Role="BAOHANH" EntitySet="BAOHANH" />
-          </AssociationSet>
           <AssociationSet Name="FK__BAOTRI__MaHD__412EB0B6" Association="Self.FK__BAOTRI__MaHD__412EB0B6">
-            <End Role="HOADON" EntitySet="HOADON" />
-            <End Role="BAOTRI" EntitySet="BAOTRI" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BAOTRI__MaHD__5DCAEF64" Association="Self.FK__BAOTRI__MaHD__5DCAEF64">
             <End Role="HOADON" EntitySet="HOADON" />
             <End Role="BAOTRI" EntitySet="BAOTRI" />
           </AssociationSet>
@@ -578,15 +386,7 @@
             <End Role="XE" EntitySet="XE" />
             <End Role="BAOTRI" EntitySet="BAOTRI" />
           </AssociationSet>
-          <AssociationSet Name="FK__BAOTRI__MaXe__5EBF139D" Association="Self.FK__BAOTRI__MaXe__5EBF139D">
-            <End Role="XE" EntitySet="XE" />
-            <End Role="BAOTRI" EntitySet="BAOTRI" />
-          </AssociationSet>
           <AssociationSet Name="FK__CHITIETHOA__MaHD__4316F928" Association="Self.FK__CHITIETHOA__MaHD__4316F928">
-            <End Role="HOADON" EntitySet="HOADON" />
-            <End Role="CHITIETHOADON" EntitySet="CHITIETHOADON" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CHITIETHOA__MaHD__5FB337D6" Association="Self.FK__CHITIETHOA__MaHD__5FB337D6">
             <End Role="HOADON" EntitySet="HOADON" />
             <End Role="CHITIETHOADON" EntitySet="CHITIETHOADON" />
           </AssociationSet>
@@ -594,15 +394,7 @@
             <End Role="XE" EntitySet="XE" />
             <End Role="CHITIETHOADON" EntitySet="CHITIETHOADON" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETHOA__MaXE__60A75C0F" Association="Self.FK__CHITIETHOA__MaXE__60A75C0F">
-            <End Role="XE" EntitySet="XE" />
-            <End Role="CHITIETHOADON" EntitySet="CHITIETHOADON" />
-          </AssociationSet>
           <AssociationSet Name="FK__CHITIETPHI__MaPN__44FF419A" Association="Self.FK__CHITIETPHI__MaPN__44FF419A">
-            <End Role="PHIEUNHAP" EntitySet="PHIEUNHAP" />
-            <End Role="CHITIETPHIEUNHAP" EntitySet="CHITIETPHIEUNHAP" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CHITIETPHI__MaPN__619B8048" Association="Self.FK__CHITIETPHI__MaPN__619B8048">
             <End Role="PHIEUNHAP" EntitySet="PHIEUNHAP" />
             <End Role="CHITIETPHIEUNHAP" EntitySet="CHITIETPHIEUNHAP" />
           </AssociationSet>
@@ -610,15 +402,7 @@
             <End Role="XE" EntitySet="XE" />
             <End Role="CHITIETPHIEUNHAP" EntitySet="CHITIETPHIEUNHAP" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETPHI__MaXe__628FA481" Association="Self.FK__CHITIETPHI__MaXe__628FA481">
-            <End Role="XE" EntitySet="XE" />
-            <End Role="CHITIETPHIEUNHAP" EntitySet="CHITIETPHIEUNHAP" />
-          </AssociationSet>
           <AssociationSet Name="FK__DANGKYBAOT__MaHD__46E78A0C" Association="Self.FK__DANGKYBAOT__MaHD__46E78A0C">
-            <End Role="HOADON" EntitySet="HOADON" />
-            <End Role="DANGKYBAOTRI" EntitySet="DANGKYBAOTRI" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DANGKYBAOT__MaHD__6383C8BA" Association="Self.FK__DANGKYBAOT__MaHD__6383C8BA">
             <End Role="HOADON" EntitySet="HOADON" />
             <End Role="DANGKYBAOTRI" EntitySet="DANGKYBAOTRI" />
           </AssociationSet>
@@ -626,15 +410,7 @@
             <End Role="XE" EntitySet="XE" />
             <End Role="DANGKYBAOTRI" EntitySet="DANGKYBAOTRI" />
           </AssociationSet>
-          <AssociationSet Name="FK__DANGKYBAOT__MaXe__6477ECF3" Association="Self.FK__DANGKYBAOT__MaXe__6477ECF3">
-            <End Role="XE" EntitySet="XE" />
-            <End Role="DANGKYBAOTRI" EntitySet="DANGKYBAOTRI" />
-          </AssociationSet>
           <AssociationSet Name="FK__HOADON__MaKH__48CFD27E" Association="Self.FK__HOADON__MaKH__48CFD27E">
-            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
-            <End Role="HOADON" EntitySet="HOADON" />
-          </AssociationSet>
-          <AssociationSet Name="FK__HOADON__MaKH__656C112C" Association="Self.FK__HOADON__MaKH__656C112C">
             <End Role="KHACHHANG" EntitySet="KHACHHANG" />
             <End Role="HOADON" EntitySet="HOADON" />
           </AssociationSet>
@@ -642,15 +418,7 @@
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="HOADON" EntitySet="HOADON" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOADON__MaNV__66603565" Association="Self.FK__HOADON__MaNV__66603565">
-            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
-            <End Role="HOADON" EntitySet="HOADON" />
-          </AssociationSet>
           <AssociationSet Name="FK__NHANVIEN__MaCV__4AB81AF0" Association="Self.FK__NHANVIEN__MaCV__4AB81AF0">
-            <End Role="CHUCVU" EntitySet="CHUCVU" />
-            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
-          </AssociationSet>
-          <AssociationSet Name="FK__NHANVIEN__MaCV__6754599E" Association="Self.FK__NHANVIEN__MaCV__6754599E">
             <End Role="CHUCVU" EntitySet="CHUCVU" />
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
           </AssociationSet>
@@ -658,23 +426,11 @@
             <End Role="NHACUNGCAP" EntitySet="NHACUNGCAP" />
             <End Role="PHIEUNHAP" EntitySet="PHIEUNHAP" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUNHAP__MaNCC__68487DD7" Association="Self.FK__PHIEUNHAP__MaNCC__68487DD7">
-            <End Role="NHACUNGCAP" EntitySet="NHACUNGCAP" />
-            <End Role="PHIEUNHAP" EntitySet="PHIEUNHAP" />
-          </AssociationSet>
           <AssociationSet Name="FK__TONKHO__MaXe__4CA06362" Association="Self.FK__TONKHO__MaXe__4CA06362">
             <End Role="XE" EntitySet="XE" />
             <End Role="TONKHO" EntitySet="TONKHO" />
           </AssociationSet>
-          <AssociationSet Name="FK__TONKHO__MaXe__693CA210" Association="Self.FK__TONKHO__MaXe__693CA210">
-            <End Role="XE" EntitySet="XE" />
-            <End Role="TONKHO" EntitySet="TONKHO" />
-          </AssociationSet>
           <AssociationSet Name="FK__XE__MaNCC__4D94879B" Association="Self.FK__XE__MaNCC__4D94879B">
-            <End Role="NHACUNGCAP" EntitySet="NHACUNGCAP" />
-            <End Role="XE" EntitySet="XE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__XE__MaNCC__6A30C649" Association="Self.FK__XE__MaNCC__6A30C649">
             <End Role="NHACUNGCAP" EntitySet="NHACUNGCAP" />
             <End Role="XE" EntitySet="XE" />
           </AssociationSet>
@@ -696,13 +452,10 @@
           <EntitySet Name="NHACUNGCAPs" EntityType="qlibanxedapModel.NHACUNGCAP" />
           <EntitySet Name="NHANVIENs" EntityType="qlibanxedapModel.NHANVIEN" />
           <EntitySet Name="PHIEUNHAPs" EntityType="qlibanxedapModel.PHIEUNHAP" />
+          <EntitySet Name="sysdiagrams" EntityType="qlibanxedapModel.sysdiagram" />
           <EntitySet Name="TONKHOes" EntityType="qlibanxedapModel.TONKHO" />
           <EntitySet Name="XEs" EntityType="qlibanxedapModel.XE" />
           <AssociationSet Name="FK__BAOHANH__MaKH__3F466844" Association="qlibanxedapModel.FK__BAOHANH__MaKH__3F466844">
-            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
-            <End Role="BAOHANH" EntitySet="BAOHANHs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BAOHANH__MaKH__5BE2A6F2" Association="qlibanxedapModel.FK__BAOHANH__MaKH__5BE2A6F2">
             <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
             <End Role="BAOHANH" EntitySet="BAOHANHs" />
           </AssociationSet>
@@ -710,15 +463,7 @@
             <End Role="XE" EntitySet="XEs" />
             <End Role="BAOHANH" EntitySet="BAOHANHs" />
           </AssociationSet>
-          <AssociationSet Name="FK__BAOHANH__MaXe__5CD6CB2B" Association="qlibanxedapModel.FK__BAOHANH__MaXe__5CD6CB2B">
-            <End Role="XE" EntitySet="XEs" />
-            <End Role="BAOHANH" EntitySet="BAOHANHs" />
-          </AssociationSet>
           <AssociationSet Name="FK__BAOTRI__MaHD__412EB0B6" Association="qlibanxedapModel.FK__BAOTRI__MaHD__412EB0B6">
-            <End Role="HOADON" EntitySet="HOADONs" />
-            <End Role="BAOTRI" EntitySet="BAOTRIs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BAOTRI__MaHD__5DCAEF64" Association="qlibanxedapModel.FK__BAOTRI__MaHD__5DCAEF64">
             <End Role="HOADON" EntitySet="HOADONs" />
             <End Role="BAOTRI" EntitySet="BAOTRIs" />
           </AssociationSet>
@@ -726,15 +471,7 @@
             <End Role="XE" EntitySet="XEs" />
             <End Role="BAOTRI" EntitySet="BAOTRIs" />
           </AssociationSet>
-          <AssociationSet Name="FK__BAOTRI__MaXe__5EBF139D" Association="qlibanxedapModel.FK__BAOTRI__MaXe__5EBF139D">
-            <End Role="XE" EntitySet="XEs" />
-            <End Role="BAOTRI" EntitySet="BAOTRIs" />
-          </AssociationSet>
           <AssociationSet Name="FK__CHITIETHOA__MaHD__4316F928" Association="qlibanxedapModel.FK__CHITIETHOA__MaHD__4316F928">
-            <End Role="HOADON" EntitySet="HOADONs" />
-            <End Role="CHITIETHOADON" EntitySet="CHITIETHOADONs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CHITIETHOA__MaHD__5FB337D6" Association="qlibanxedapModel.FK__CHITIETHOA__MaHD__5FB337D6">
             <End Role="HOADON" EntitySet="HOADONs" />
             <End Role="CHITIETHOADON" EntitySet="CHITIETHOADONs" />
           </AssociationSet>
@@ -742,15 +479,7 @@
             <End Role="XE" EntitySet="XEs" />
             <End Role="CHITIETHOADON" EntitySet="CHITIETHOADONs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETHOA__MaXE__60A75C0F" Association="qlibanxedapModel.FK__CHITIETHOA__MaXE__60A75C0F">
-            <End Role="XE" EntitySet="XEs" />
-            <End Role="CHITIETHOADON" EntitySet="CHITIETHOADONs" />
-          </AssociationSet>
           <AssociationSet Name="FK__CHITIETPHI__MaPN__44FF419A" Association="qlibanxedapModel.FK__CHITIETPHI__MaPN__44FF419A">
-            <End Role="PHIEUNHAP" EntitySet="PHIEUNHAPs" />
-            <End Role="CHITIETPHIEUNHAP" EntitySet="CHITIETPHIEUNHAPs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CHITIETPHI__MaPN__619B8048" Association="qlibanxedapModel.FK__CHITIETPHI__MaPN__619B8048">
             <End Role="PHIEUNHAP" EntitySet="PHIEUNHAPs" />
             <End Role="CHITIETPHIEUNHAP" EntitySet="CHITIETPHIEUNHAPs" />
           </AssociationSet>
@@ -758,15 +487,7 @@
             <End Role="XE" EntitySet="XEs" />
             <End Role="CHITIETPHIEUNHAP" EntitySet="CHITIETPHIEUNHAPs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETPHI__MaXe__628FA481" Association="qlibanxedapModel.FK__CHITIETPHI__MaXe__628FA481">
-            <End Role="XE" EntitySet="XEs" />
-            <End Role="CHITIETPHIEUNHAP" EntitySet="CHITIETPHIEUNHAPs" />
-          </AssociationSet>
           <AssociationSet Name="FK__NHANVIEN__MaCV__4AB81AF0" Association="qlibanxedapModel.FK__NHANVIEN__MaCV__4AB81AF0">
-            <End Role="CHUCVU" EntitySet="CHUCVUs" />
-            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__NHANVIEN__MaCV__6754599E" Association="qlibanxedapModel.FK__NHANVIEN__MaCV__6754599E">
             <End Role="CHUCVU" EntitySet="CHUCVUs" />
             <End Role="NHANVIEN" EntitySet="NHANVIENs" />
           </AssociationSet>
@@ -774,15 +495,7 @@
             <End Role="HOADON" EntitySet="HOADONs" />
             <End Role="DANGKYBAOTRI" EntitySet="DANGKYBAOTRIs" />
           </AssociationSet>
-          <AssociationSet Name="FK__DANGKYBAOT__MaHD__6383C8BA" Association="qlibanxedapModel.FK__DANGKYBAOT__MaHD__6383C8BA">
-            <End Role="HOADON" EntitySet="HOADONs" />
-            <End Role="DANGKYBAOTRI" EntitySet="DANGKYBAOTRIs" />
-          </AssociationSet>
           <AssociationSet Name="FK__DANGKYBAOT__MaXe__47DBAE45" Association="qlibanxedapModel.FK__DANGKYBAOT__MaXe__47DBAE45">
-            <End Role="XE" EntitySet="XEs" />
-            <End Role="DANGKYBAOTRI" EntitySet="DANGKYBAOTRIs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DANGKYBAOT__MaXe__6477ECF3" Association="qlibanxedapModel.FK__DANGKYBAOT__MaXe__6477ECF3">
             <End Role="XE" EntitySet="XEs" />
             <End Role="DANGKYBAOTRI" EntitySet="DANGKYBAOTRIs" />
           </AssociationSet>
@@ -790,15 +503,7 @@
             <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
             <End Role="HOADON" EntitySet="HOADONs" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOADON__MaKH__656C112C" Association="qlibanxedapModel.FK__HOADON__MaKH__656C112C">
-            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
-            <End Role="HOADON" EntitySet="HOADONs" />
-          </AssociationSet>
           <AssociationSet Name="FK__HOADON__MaNV__49C3F6B7" Association="qlibanxedapModel.FK__HOADON__MaNV__49C3F6B7">
-            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
-            <End Role="HOADON" EntitySet="HOADONs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__HOADON__MaNV__66603565" Association="qlibanxedapModel.FK__HOADON__MaNV__66603565">
             <End Role="NHANVIEN" EntitySet="NHANVIENs" />
             <End Role="HOADON" EntitySet="HOADONs" />
           </AssociationSet>
@@ -806,23 +511,11 @@
             <End Role="NHACUNGCAP" EntitySet="NHACUNGCAPs" />
             <End Role="PHIEUNHAP" EntitySet="PHIEUNHAPs" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUNHAP__MaNCC__68487DD7" Association="qlibanxedapModel.FK__PHIEUNHAP__MaNCC__68487DD7">
-            <End Role="NHACUNGCAP" EntitySet="NHACUNGCAPs" />
-            <End Role="PHIEUNHAP" EntitySet="PHIEUNHAPs" />
-          </AssociationSet>
           <AssociationSet Name="FK__XE__MaNCC__4D94879B" Association="qlibanxedapModel.FK__XE__MaNCC__4D94879B">
             <End Role="NHACUNGCAP" EntitySet="NHACUNGCAPs" />
             <End Role="XE" EntitySet="XEs" />
           </AssociationSet>
-          <AssociationSet Name="FK__XE__MaNCC__6A30C649" Association="qlibanxedapModel.FK__XE__MaNCC__6A30C649">
-            <End Role="NHACUNGCAP" EntitySet="NHACUNGCAPs" />
-            <End Role="XE" EntitySet="XEs" />
-          </AssociationSet>
           <AssociationSet Name="FK__TONKHO__MaXe__4CA06362" Association="qlibanxedapModel.FK__TONKHO__MaXe__4CA06362">
-            <End Role="XE" EntitySet="XEs" />
-            <End Role="TONKHO" EntitySet="TONKHOes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__TONKHO__MaXe__693CA210" Association="qlibanxedapModel.FK__TONKHO__MaXe__693CA210">
             <End Role="XE" EntitySet="XEs" />
             <End Role="TONKHO" EntitySet="TONKHOes" />
           </AssociationSet>
@@ -838,9 +531,7 @@
           <Property Name="NoiDungBH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="TrangThai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="KHACHHANG" Relationship="qlibanxedapModel.FK__BAOHANH__MaKH__3F466844" FromRole="BAOHANH" ToRole="KHACHHANG" />
-          <NavigationProperty Name="KHACHHANG1" Relationship="qlibanxedapModel.FK__BAOHANH__MaKH__5BE2A6F2" FromRole="BAOHANH" ToRole="KHACHHANG" />
           <NavigationProperty Name="XE" Relationship="qlibanxedapModel.FK__BAOHANH__MaXe__403A8C7D" FromRole="BAOHANH" ToRole="XE" />
-          <NavigationProperty Name="XE1" Relationship="qlibanxedapModel.FK__BAOHANH__MaXe__5CD6CB2B" FromRole="BAOHANH" ToRole="XE" />
         </EntityType>
         <EntityType Name="BAOTRI">
           <Key>
@@ -852,9 +543,7 @@
           <Property Name="NgayBaoTri" Type="DateTime" Precision="0" />
           <Property Name="NoiDungBT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="HOADON" Relationship="qlibanxedapModel.FK__BAOTRI__MaHD__412EB0B6" FromRole="BAOTRI" ToRole="HOADON" />
-          <NavigationProperty Name="HOADON1" Relationship="qlibanxedapModel.FK__BAOTRI__MaHD__5DCAEF64" FromRole="BAOTRI" ToRole="HOADON" />
           <NavigationProperty Name="XE" Relationship="qlibanxedapModel.FK__BAOTRI__MaXe__4222D4EF" FromRole="BAOTRI" ToRole="XE" />
-          <NavigationProperty Name="XE1" Relationship="qlibanxedapModel.FK__BAOTRI__MaXe__5EBF139D" FromRole="BAOTRI" ToRole="XE" />
         </EntityType>
         <EntityType Name="CHITIETHOADON">
           <Key>
@@ -866,9 +555,7 @@
           <Property Name="SoLuong" Type="Int32" />
           <Property Name="DonGia" Type="Double" />
           <NavigationProperty Name="HOADON" Relationship="qlibanxedapModel.FK__CHITIETHOA__MaHD__4316F928" FromRole="CHITIETHOADON" ToRole="HOADON" />
-          <NavigationProperty Name="HOADON1" Relationship="qlibanxedapModel.FK__CHITIETHOA__MaHD__5FB337D6" FromRole="CHITIETHOADON" ToRole="HOADON" />
           <NavigationProperty Name="XE" Relationship="qlibanxedapModel.FK__CHITIETHOA__MaXE__440B1D61" FromRole="CHITIETHOADON" ToRole="XE" />
-          <NavigationProperty Name="XE1" Relationship="qlibanxedapModel.FK__CHITIETHOA__MaXE__60A75C0F" FromRole="CHITIETHOADON" ToRole="XE" />
         </EntityType>
         <EntityType Name="CHITIETPHIEUNHAP">
           <Key>
@@ -881,9 +568,7 @@
           <Property Name="DonGia" Type="Double" />
           <Property Name="TongTien" Type="Double" />
           <NavigationProperty Name="PHIEUNHAP" Relationship="qlibanxedapModel.FK__CHITIETPHI__MaPN__44FF419A" FromRole="CHITIETPHIEUNHAP" ToRole="PHIEUNHAP" />
-          <NavigationProperty Name="PHIEUNHAP1" Relationship="qlibanxedapModel.FK__CHITIETPHI__MaPN__619B8048" FromRole="CHITIETPHIEUNHAP" ToRole="PHIEUNHAP" />
           <NavigationProperty Name="XE" Relationship="qlibanxedapModel.FK__CHITIETPHI__MaXe__45F365D3" FromRole="CHITIETPHIEUNHAP" ToRole="XE" />
-          <NavigationProperty Name="XE1" Relationship="qlibanxedapModel.FK__CHITIETPHI__MaXe__628FA481" FromRole="CHITIETPHIEUNHAP" ToRole="XE" />
         </EntityType>
         <EntityType Name="CHUCVU">
           <Key>
@@ -892,7 +577,6 @@
           <Property Name="MaCV" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="TenCV" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="NHANVIENs" Relationship="qlibanxedapModel.FK__NHANVIEN__MaCV__4AB81AF0" FromRole="CHUCVU" ToRole="NHANVIEN" />
-          <NavigationProperty Name="NHANVIENs1" Relationship="qlibanxedapModel.FK__NHANVIEN__MaCV__6754599E" FromRole="CHUCVU" ToRole="NHANVIEN" />
         </EntityType>
         <EntityType Name="DANGKYBAOTRI">
           <Key>
@@ -904,9 +588,7 @@
           <Property Name="NgayDangKy" Type="DateTime" Precision="0" />
           <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="HOADON" Relationship="qlibanxedapModel.FK__DANGKYBAOT__MaHD__46E78A0C" FromRole="DANGKYBAOTRI" ToRole="HOADON" />
-          <NavigationProperty Name="HOADON1" Relationship="qlibanxedapModel.FK__DANGKYBAOT__MaHD__6383C8BA" FromRole="DANGKYBAOTRI" ToRole="HOADON" />
           <NavigationProperty Name="XE" Relationship="qlibanxedapModel.FK__DANGKYBAOT__MaXe__47DBAE45" FromRole="DANGKYBAOTRI" ToRole="XE" />
-          <NavigationProperty Name="XE1" Relationship="qlibanxedapModel.FK__DANGKYBAOT__MaXe__6477ECF3" FromRole="DANGKYBAOTRI" ToRole="XE" />
         </EntityType>
         <EntityType Name="HOADON">
           <Key>
@@ -918,15 +600,10 @@
           <Property Name="NgayTaoHD" Type="DateTime" Precision="0" />
           <Property Name="TongTien" Type="Double" />
           <NavigationProperty Name="BAOTRIs" Relationship="qlibanxedapModel.FK__BAOTRI__MaHD__412EB0B6" FromRole="HOADON" ToRole="BAOTRI" />
-          <NavigationProperty Name="BAOTRIs1" Relationship="qlibanxedapModel.FK__BAOTRI__MaHD__5DCAEF64" FromRole="HOADON" ToRole="BAOTRI" />
           <NavigationProperty Name="CHITIETHOADONs" Relationship="qlibanxedapModel.FK__CHITIETHOA__MaHD__4316F928" FromRole="HOADON" ToRole="CHITIETHOADON" />
-          <NavigationProperty Name="CHITIETHOADONs1" Relationship="qlibanxedapModel.FK__CHITIETHOA__MaHD__5FB337D6" FromRole="HOADON" ToRole="CHITIETHOADON" />
           <NavigationProperty Name="DANGKYBAOTRIs" Relationship="qlibanxedapModel.FK__DANGKYBAOT__MaHD__46E78A0C" FromRole="HOADON" ToRole="DANGKYBAOTRI" />
-          <NavigationProperty Name="DANGKYBAOTRIs1" Relationship="qlibanxedapModel.FK__DANGKYBAOT__MaHD__6383C8BA" FromRole="HOADON" ToRole="DANGKYBAOTRI" />
           <NavigationProperty Name="KHACHHANG" Relationship="qlibanxedapModel.FK__HOADON__MaKH__48CFD27E" FromRole="HOADON" ToRole="KHACHHANG" />
-          <NavigationProperty Name="KHACHHANG1" Relationship="qlibanxedapModel.FK__HOADON__MaKH__656C112C" FromRole="HOADON" ToRole="KHACHHANG" />
           <NavigationProperty Name="NHANVIEN" Relationship="qlibanxedapModel.FK__HOADON__MaNV__49C3F6B7" FromRole="HOADON" ToRole="NHANVIEN" />
-          <NavigationProperty Name="NHANVIEN1" Relationship="qlibanxedapModel.FK__HOADON__MaNV__66603565" FromRole="HOADON" ToRole="NHANVIEN" />
         </EntityType>
         <EntityType Name="KHACHHANG">
           <Key>
@@ -937,12 +614,10 @@
           <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="TenDN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Matkhau" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SoDienThoai" Type="Int32" />
+          <Property Name="SoDienThoai" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="BAOHANHs" Relationship="qlibanxedapModel.FK__BAOHANH__MaKH__3F466844" FromRole="KHACHHANG" ToRole="BAOHANH" />
-          <NavigationProperty Name="BAOHANHs1" Relationship="qlibanxedapModel.FK__BAOHANH__MaKH__5BE2A6F2" FromRole="KHACHHANG" ToRole="BAOHANH" />
           <NavigationProperty Name="HOADONs" Relationship="qlibanxedapModel.FK__HOADON__MaKH__48CFD27E" FromRole="KHACHHANG" ToRole="HOADON" />
-          <NavigationProperty Name="HOADONs1" Relationship="qlibanxedapModel.FK__HOADON__MaKH__656C112C" FromRole="KHACHHANG" ToRole="HOADON" />
         </EntityType>
         <EntityType Name="KHUYENMAI">
           <Key>
@@ -961,13 +636,11 @@
           <Property Name="MaNCC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenNCC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SoDienThoai" Type="Int32" />
+          <Property Name="SoDienThoai" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ThongTinMoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PHIEUNHAPs" Relationship="qlibanxedapModel.FK__PHIEUNHAP__MaNCC__4BAC3F29" FromRole="NHACUNGCAP" ToRole="PHIEUNHAP" />
-          <NavigationProperty Name="PHIEUNHAPs1" Relationship="qlibanxedapModel.FK__PHIEUNHAP__MaNCC__68487DD7" FromRole="NHACUNGCAP" ToRole="PHIEUNHAP" />
           <NavigationProperty Name="XEs" Relationship="qlibanxedapModel.FK__XE__MaNCC__4D94879B" FromRole="NHACUNGCAP" ToRole="XE" />
-          <NavigationProperty Name="XEs1" Relationship="qlibanxedapModel.FK__XE__MaNCC__6A30C649" FromRole="NHACUNGCAP" ToRole="XE" />
         </EntityType>
         <EntityType Name="NHANVIEN">
           <Key>
@@ -977,15 +650,13 @@
           <Property Name="TenNV" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NgaySinh" Type="DateTime" Precision="0" />
           <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SoDienThoai" Type="Int32" />
+          <Property Name="SoDienThoai" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="TenDN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Matkhau" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="MaCV" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="CHUCVU" Relationship="qlibanxedapModel.FK__NHANVIEN__MaCV__4AB81AF0" FromRole="NHANVIEN" ToRole="CHUCVU" />
-          <NavigationProperty Name="CHUCVU1" Relationship="qlibanxedapModel.FK__NHANVIEN__MaCV__6754599E" FromRole="NHANVIEN" ToRole="CHUCVU" />
           <NavigationProperty Name="HOADONs" Relationship="qlibanxedapModel.FK__HOADON__MaNV__49C3F6B7" FromRole="NHANVIEN" ToRole="HOADON" />
-          <NavigationProperty Name="HOADONs1" Relationship="qlibanxedapModel.FK__HOADON__MaNV__66603565" FromRole="NHANVIEN" ToRole="HOADON" />
         </EntityType>
         <EntityType Name="PHIEUNHAP">
           <Key>
@@ -997,9 +668,17 @@
           <Property Name="TongTien" Type="Double" />
           <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CHITIETPHIEUNHAPs" Relationship="qlibanxedapModel.FK__CHITIETPHI__MaPN__44FF419A" FromRole="PHIEUNHAP" ToRole="CHITIETPHIEUNHAP" />
-          <NavigationProperty Name="CHITIETPHIEUNHAPs1" Relationship="qlibanxedapModel.FK__CHITIETPHI__MaPN__619B8048" FromRole="PHIEUNHAP" ToRole="CHITIETPHIEUNHAP" />
           <NavigationProperty Name="NHACUNGCAP" Relationship="qlibanxedapModel.FK__PHIEUNHAP__MaNCC__4BAC3F29" FromRole="PHIEUNHAP" ToRole="NHACUNGCAP" />
-          <NavigationProperty Name="NHACUNGCAP1" Relationship="qlibanxedapModel.FK__PHIEUNHAP__MaNCC__68487DD7" FromRole="PHIEUNHAP" ToRole="NHACUNGCAP" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="TONKHO">
           <Key>
@@ -1008,7 +687,6 @@
           <Property Name="MaXe" Type="Int32" Nullable="false" />
           <Property Name="SoLuong" Type="Int32" />
           <NavigationProperty Name="XE" Relationship="qlibanxedapModel.FK__TONKHO__MaXe__4CA06362" FromRole="TONKHO" ToRole="XE" />
-          <NavigationProperty Name="XE1" Relationship="qlibanxedapModel.FK__TONKHO__MaXe__693CA210" FromRole="TONKHO" ToRole="XE" />
         </EntityType>
         <EntityType Name="XE">
           <Key>
@@ -1022,34 +700,16 @@
           <Property Name="MauSac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CDBaoHanh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="MaNCC" Type="Int32" />
+          <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="BAOHANHs" Relationship="qlibanxedapModel.FK__BAOHANH__MaXe__403A8C7D" FromRole="XE" ToRole="BAOHANH" />
-          <NavigationProperty Name="BAOHANHs1" Relationship="qlibanxedapModel.FK__BAOHANH__MaXe__5CD6CB2B" FromRole="XE" ToRole="BAOHANH" />
           <NavigationProperty Name="BAOTRIs" Relationship="qlibanxedapModel.FK__BAOTRI__MaXe__4222D4EF" FromRole="XE" ToRole="BAOTRI" />
-          <NavigationProperty Name="BAOTRIs1" Relationship="qlibanxedapModel.FK__BAOTRI__MaXe__5EBF139D" FromRole="XE" ToRole="BAOTRI" />
           <NavigationProperty Name="CHITIETHOADONs" Relationship="qlibanxedapModel.FK__CHITIETHOA__MaXE__440B1D61" FromRole="XE" ToRole="CHITIETHOADON" />
-          <NavigationProperty Name="CHITIETHOADONs1" Relationship="qlibanxedapModel.FK__CHITIETHOA__MaXE__60A75C0F" FromRole="XE" ToRole="CHITIETHOADON" />
           <NavigationProperty Name="CHITIETPHIEUNHAPs" Relationship="qlibanxedapModel.FK__CHITIETPHI__MaXe__45F365D3" FromRole="XE" ToRole="CHITIETPHIEUNHAP" />
-          <NavigationProperty Name="CHITIETPHIEUNHAPs1" Relationship="qlibanxedapModel.FK__CHITIETPHI__MaXe__628FA481" FromRole="XE" ToRole="CHITIETPHIEUNHAP" />
           <NavigationProperty Name="DANGKYBAOTRIs" Relationship="qlibanxedapModel.FK__DANGKYBAOT__MaXe__47DBAE45" FromRole="XE" ToRole="DANGKYBAOTRI" />
-          <NavigationProperty Name="DANGKYBAOTRIs1" Relationship="qlibanxedapModel.FK__DANGKYBAOT__MaXe__6477ECF3" FromRole="XE" ToRole="DANGKYBAOTRI" />
           <NavigationProperty Name="NHACUNGCAP" Relationship="qlibanxedapModel.FK__XE__MaNCC__4D94879B" FromRole="XE" ToRole="NHACUNGCAP" />
-          <NavigationProperty Name="NHACUNGCAP1" Relationship="qlibanxedapModel.FK__XE__MaNCC__6A30C649" FromRole="XE" ToRole="NHACUNGCAP" />
           <NavigationProperty Name="TONKHO" Relationship="qlibanxedapModel.FK__TONKHO__MaXe__4CA06362" FromRole="XE" ToRole="TONKHO" />
-          <NavigationProperty Name="TONKHO1" Relationship="qlibanxedapModel.FK__TONKHO__MaXe__693CA210" FromRole="XE" ToRole="TONKHO" />
         </EntityType>
         <Association Name="FK__BAOHANH__MaKH__3F466844">
-          <End Type="qlibanxedapModel.KHACHHANG" Role="KHACHHANG" Multiplicity="0..1" />
-          <End Type="qlibanxedapModel.BAOHANH" Role="BAOHANH" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KHACHHANG">
-              <PropertyRef Name="MaKH" />
-            </Principal>
-            <Dependent Role="BAOHANH">
-              <PropertyRef Name="MaKH" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BAOHANH__MaKH__5BE2A6F2">
           <End Type="qlibanxedapModel.KHACHHANG" Role="KHACHHANG" Multiplicity="0..1" />
           <End Type="qlibanxedapModel.BAOHANH" Role="BAOHANH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1073,31 +733,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__BAOHANH__MaXe__5CD6CB2B">
-          <End Type="qlibanxedapModel.XE" Role="XE" Multiplicity="0..1" />
-          <End Type="qlibanxedapModel.BAOHANH" Role="BAOHANH" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="XE">
-              <PropertyRef Name="MaXe" />
-            </Principal>
-            <Dependent Role="BAOHANH">
-              <PropertyRef Name="MaXe" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__BAOTRI__MaHD__412EB0B6">
-          <End Type="qlibanxedapModel.HOADON" Role="HOADON" Multiplicity="1" />
-          <End Type="qlibanxedapModel.BAOTRI" Role="BAOTRI" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HOADON">
-              <PropertyRef Name="MaHD" />
-            </Principal>
-            <Dependent Role="BAOTRI">
-              <PropertyRef Name="MaHD" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BAOTRI__MaHD__5DCAEF64">
           <End Type="qlibanxedapModel.HOADON" Role="HOADON" Multiplicity="1" />
           <End Type="qlibanxedapModel.BAOTRI" Role="BAOTRI" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1121,31 +757,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__BAOTRI__MaXe__5EBF139D">
-          <End Type="qlibanxedapModel.XE" Role="XE" Multiplicity="1" />
-          <End Type="qlibanxedapModel.BAOTRI" Role="BAOTRI" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="XE">
-              <PropertyRef Name="MaXe" />
-            </Principal>
-            <Dependent Role="BAOTRI">
-              <PropertyRef Name="MaXe" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__CHITIETHOA__MaHD__4316F928">
-          <End Type="qlibanxedapModel.HOADON" Role="HOADON" Multiplicity="1" />
-          <End Type="qlibanxedapModel.CHITIETHOADON" Role="CHITIETHOADON" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HOADON">
-              <PropertyRef Name="MaHD" />
-            </Principal>
-            <Dependent Role="CHITIETHOADON">
-              <PropertyRef Name="MaHD" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CHITIETHOA__MaHD__5FB337D6">
           <End Type="qlibanxedapModel.HOADON" Role="HOADON" Multiplicity="1" />
           <End Type="qlibanxedapModel.CHITIETHOADON" Role="CHITIETHOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1169,31 +781,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETHOA__MaXE__60A75C0F">
-          <End Type="qlibanxedapModel.XE" Role="XE" Multiplicity="1" />
-          <End Type="qlibanxedapModel.CHITIETHOADON" Role="CHITIETHOADON" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="XE">
-              <PropertyRef Name="MaXe" />
-            </Principal>
-            <Dependent Role="CHITIETHOADON">
-              <PropertyRef Name="MaXE" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__CHITIETPHI__MaPN__44FF419A">
-          <End Type="qlibanxedapModel.PHIEUNHAP" Role="PHIEUNHAP" Multiplicity="1" />
-          <End Type="qlibanxedapModel.CHITIETPHIEUNHAP" Role="CHITIETPHIEUNHAP" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PHIEUNHAP">
-              <PropertyRef Name="MaPN" />
-            </Principal>
-            <Dependent Role="CHITIETPHIEUNHAP">
-              <PropertyRef Name="MaPN" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CHITIETPHI__MaPN__619B8048">
           <End Type="qlibanxedapModel.PHIEUNHAP" Role="PHIEUNHAP" Multiplicity="1" />
           <End Type="qlibanxedapModel.CHITIETPHIEUNHAP" Role="CHITIETPHIEUNHAP" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1217,31 +805,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETPHI__MaXe__628FA481">
-          <End Type="qlibanxedapModel.XE" Role="XE" Multiplicity="1" />
-          <End Type="qlibanxedapModel.CHITIETPHIEUNHAP" Role="CHITIETPHIEUNHAP" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="XE">
-              <PropertyRef Name="MaXe" />
-            </Principal>
-            <Dependent Role="CHITIETPHIEUNHAP">
-              <PropertyRef Name="MaXe" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__NHANVIEN__MaCV__4AB81AF0">
-          <End Type="qlibanxedapModel.CHUCVU" Role="CHUCVU" Multiplicity="0..1" />
-          <End Type="qlibanxedapModel.NHANVIEN" Role="NHANVIEN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CHUCVU">
-              <PropertyRef Name="MaCV" />
-            </Principal>
-            <Dependent Role="NHANVIEN">
-              <PropertyRef Name="MaCV" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__NHANVIEN__MaCV__6754599E">
           <End Type="qlibanxedapModel.CHUCVU" Role="CHUCVU" Multiplicity="0..1" />
           <End Type="qlibanxedapModel.NHANVIEN" Role="NHANVIEN" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1265,31 +829,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DANGKYBAOT__MaHD__6383C8BA">
-          <End Type="qlibanxedapModel.HOADON" Role="HOADON" Multiplicity="1" />
-          <End Type="qlibanxedapModel.DANGKYBAOTRI" Role="DANGKYBAOTRI" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HOADON">
-              <PropertyRef Name="MaHD" />
-            </Principal>
-            <Dependent Role="DANGKYBAOTRI">
-              <PropertyRef Name="MaHD" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__DANGKYBAOT__MaXe__47DBAE45">
-          <End Type="qlibanxedapModel.XE" Role="XE" Multiplicity="1" />
-          <End Type="qlibanxedapModel.DANGKYBAOTRI" Role="DANGKYBAOTRI" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="XE">
-              <PropertyRef Name="MaXe" />
-            </Principal>
-            <Dependent Role="DANGKYBAOTRI">
-              <PropertyRef Name="MaXe" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__DANGKYBAOT__MaXe__6477ECF3">
           <End Type="qlibanxedapModel.XE" Role="XE" Multiplicity="1" />
           <End Type="qlibanxedapModel.DANGKYBAOTRI" Role="DANGKYBAOTRI" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1313,31 +853,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOADON__MaKH__656C112C">
-          <End Type="qlibanxedapModel.KHACHHANG" Role="KHACHHANG" Multiplicity="0..1" />
-          <End Type="qlibanxedapModel.HOADON" Role="HOADON" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KHACHHANG">
-              <PropertyRef Name="MaKH" />
-            </Principal>
-            <Dependent Role="HOADON">
-              <PropertyRef Name="MaKH" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__HOADON__MaNV__49C3F6B7">
-          <End Type="qlibanxedapModel.NHANVIEN" Role="NHANVIEN" Multiplicity="0..1" />
-          <End Type="qlibanxedapModel.HOADON" Role="HOADON" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NHANVIEN">
-              <PropertyRef Name="MaNV" />
-            </Principal>
-            <Dependent Role="HOADON">
-              <PropertyRef Name="MaNV" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__HOADON__MaNV__66603565">
           <End Type="qlibanxedapModel.NHANVIEN" Role="NHANVIEN" Multiplicity="0..1" />
           <End Type="qlibanxedapModel.HOADON" Role="HOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1361,18 +877,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUNHAP__MaNCC__68487DD7">
-          <End Type="qlibanxedapModel.NHACUNGCAP" Role="NHACUNGCAP" Multiplicity="0..1" />
-          <End Type="qlibanxedapModel.PHIEUNHAP" Role="PHIEUNHAP" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NHACUNGCAP">
-              <PropertyRef Name="MaNCC" />
-            </Principal>
-            <Dependent Role="PHIEUNHAP">
-              <PropertyRef Name="MaNCC" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__XE__MaNCC__4D94879B">
           <End Type="qlibanxedapModel.NHACUNGCAP" Role="NHACUNGCAP" Multiplicity="0..1" />
           <End Type="qlibanxedapModel.XE" Role="XE" Multiplicity="*" />
@@ -1385,31 +889,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__XE__MaNCC__6A30C649">
-          <End Type="qlibanxedapModel.NHACUNGCAP" Role="NHACUNGCAP" Multiplicity="0..1" />
-          <End Type="qlibanxedapModel.XE" Role="XE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NHACUNGCAP">
-              <PropertyRef Name="MaNCC" />
-            </Principal>
-            <Dependent Role="XE">
-              <PropertyRef Name="MaNCC" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__TONKHO__MaXe__4CA06362">
-          <End Type="qlibanxedapModel.XE" Role="XE" Multiplicity="1" />
-          <End Type="qlibanxedapModel.TONKHO" Role="TONKHO" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="XE">
-              <PropertyRef Name="MaXe" />
-            </Principal>
-            <Dependent Role="TONKHO">
-              <PropertyRef Name="MaXe" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__TONKHO__MaXe__693CA210">
           <End Type="qlibanxedapModel.XE" Role="XE" Multiplicity="1" />
           <End Type="qlibanxedapModel.TONKHO" Role="TONKHO" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -1561,6 +1041,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="qlibanxedapModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TONKHOes">
             <EntityTypeMapping TypeName="qlibanxedapModel.TONKHO">
               <MappingFragment StoreEntitySet="TONKHO">
@@ -1572,6 +1063,7 @@
           <EntitySetMapping Name="XEs">
             <EntityTypeMapping TypeName="qlibanxedapModel.XE">
               <MappingFragment StoreEntitySet="XE">
+                <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
                 <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
                 <ScalarProperty Name="CDBaoHanh" ColumnName="CDBaoHanh" />
                 <ScalarProperty Name="MauSac" ColumnName="MauSac" />

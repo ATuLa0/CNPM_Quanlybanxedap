@@ -37,6 +37,7 @@ namespace CNPM_Quanlybanxedap.Models
         public virtual DbSet<NHACUNGCAP> NHACUNGCAPs { get; set; }
         public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
         public virtual DbSet<PHIEUNHAP> PHIEUNHAPs { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TONKHO> TONKHOes { get; set; }
         public virtual DbSet<XE> XEs { get; set; }
     }

@@ -18,9 +18,7 @@ namespace CNPM_Quanlybanxedap.Models
         public KHACHHANG()
         {
             this.BAOHANHs = new HashSet<BAOHANH>();
-            this.BAOHANHs1 = new HashSet<BAOHANH>();
             this.HOADONs = new HashSet<HOADON>();
-            this.HOADONs1 = new HashSet<HOADON>();
         }
     
         public int MaKH { get; set; }
@@ -28,16 +26,12 @@ namespace CNPM_Quanlybanxedap.Models
         public string DiaChi { get; set; }
         public string TenDN { get; set; }
         public string Matkhau { get; set; }
-        public Nullable<int> SoDienThoai { get; set; }
+        public string SoDienThoai { get; set; }
         public string Email { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BAOHANH> BAOHANHs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BAOHANH> BAOHANHs1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HOADON> HOADONs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HOADON> HOADONs1 { get; set; }
     }
 }

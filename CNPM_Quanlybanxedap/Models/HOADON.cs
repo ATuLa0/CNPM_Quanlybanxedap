@@ -18,11 +18,8 @@ namespace CNPM_Quanlybanxedap.Models
         public HOADON()
         {
             this.BAOTRIs = new HashSet<BAOTRI>();
-            this.BAOTRIs1 = new HashSet<BAOTRI>();
             this.CHITIETHOADONs = new HashSet<CHITIETHOADON>();
-            this.CHITIETHOADONs1 = new HashSet<CHITIETHOADON>();
             this.DANGKYBAOTRIs = new HashSet<DANGKYBAOTRI>();
-            this.DANGKYBAOTRIs1 = new HashSet<DANGKYBAOTRI>();
         }
     
         public int MaHD { get; set; }
@@ -34,18 +31,10 @@ namespace CNPM_Quanlybanxedap.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BAOTRI> BAOTRIs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BAOTRI> BAOTRIs1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETHOADON> CHITIETHOADONs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CHITIETHOADON> CHITIETHOADONs1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DANGKYBAOTRI> DANGKYBAOTRIs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DANGKYBAOTRI> DANGKYBAOTRIs1 { get; set; }
         public virtual KHACHHANG KHACHHANG { get; set; }
-        public virtual KHACHHANG KHACHHANG1 { get; set; }
         public virtual NHANVIEN NHANVIEN { get; set; }
-        public virtual NHANVIEN NHANVIEN1 { get; set; }
     }
 }
