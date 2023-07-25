@@ -2173,8 +2173,8 @@
     <Content Include="Content\masterlayout\js\bootstrap.js.map" />
     <Content Include="Content\masterlayout\js\bootstrap.min.js.map" />
     <Content Include="Areas\Admin\Views\Provider\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Provider\CreateProvider.cshtml" />
     <Content Include="Areas\Admin\Views\Provider\EditProvider.cshtml" />
+    <Content Include="Areas\Admin\Views\Provider\CreateProvider.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
