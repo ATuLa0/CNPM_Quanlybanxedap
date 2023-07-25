@@ -2175,6 +2175,9 @@
     <Content Include="Areas\Admin\Views\Provider\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Provider\EditProvider.cshtml" />
     <Content Include="Areas\Admin\Views\Provider\CreateProvider.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\CreateProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\EditProduct.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2296,7 +2299,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\Product\" />
     <Folder Include="Views\Provider\" />
   </ItemGroup>
   <ItemGroup>
