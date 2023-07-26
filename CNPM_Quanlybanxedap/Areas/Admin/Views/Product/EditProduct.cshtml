@@ -1,0 +1,127 @@
+﻿@model CNPM_Quanlybanxedap.Models.XE
+
+@{
+    ViewBag.Title = "EditProduct";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    .form-horizontal .control-label {
+        font-weight: bold;
+    }
+
+    .form-control {
+        border-radius: 0;
+    }
+
+    .btn-save {
+        background-color: #007bff;
+        color: #fff;
+        border-color: #007bff;
+    }
+
+        .btn-save:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+    .form-group {
+        margin-bottom: 2rem;
+    }
+
+    .title {
+        margin-bottom: 1.5rem;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="container">
+    <h4 class="title">Chỉnh sửa thông tin</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="row form-group">
+        <label class="col-md-2 col-form-label control-label">Mã Xe</label>
+        <div class="col-md-10">
+            <span class="form-control">@Model.MaXe</span>
+        </div>
+    </div>
+
+
+    <div class="row form-group">
+        <label class="col-md-2 col-form-label control-label">Tên Xe</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TenXe, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TenXe, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-2 col-form-label control-label">Mô Tả</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-2 col-form-label control-label">Giá Bán</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.GiaBan, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-2 col-form-label control-label">Xuất Xứ</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.XuatXu, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.XuatXu, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-2 col-form-label control-label">Màu Sắc</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.MauSac, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MauSac, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-2 col-form-label control-label">Chính Đại Bảo Hành</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CDBaoHanh, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CDBaoHanh, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-2 col-form-label control-label">Mã Nhà Cung Cấp</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.MaNCC, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MaNCC, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-2 col-form-label control-label">Hình Ảnh</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.HinhAnh, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-md-10 offset-md-2">
+            <input type="submit" value="Save" class="btn btn-save" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
