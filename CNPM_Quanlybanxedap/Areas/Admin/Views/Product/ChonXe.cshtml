@@ -1,0 +1,151 @@
+﻿@model IEnumerable<CNPM_Quanlybanxedap.Models.XE>
+
+@{
+    ViewBag.Title = "ChonXe";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<!-- Add this before the closing </body> tag -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    /* Căn giữa form */
+    .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* Style cho table */
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+        .table th,
+        .table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+    /* Style cho input số lượng */
+    input[type="number"] {
+        width: 70px;
+        padding: 4px;
+        text-align: center;
+    }
+
+    /* Style cho button Tiếp tục */
+    .btn {
+        padding: 8px 15px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+</style>
+
+<h2>Chọn Xe</h2>
+
+<p>
+    @Session["MaKH"]
+</p>
+
+@using (Html.BeginForm("ChonXe", "Product", FormMethod.Post))
+{
+    <table class="table">
+        <tr>
+            <th>
+                Mã xe
+            </th>
+            <th>
+                Tên xe
+            </th>
+            <th>
+                Giá
+            </th>
+            <th>
+                Xuất xứ
+            </th>
+            <th>
+                Màu sắc
+            </th>
+            <th>
+                Bảo hành
+            </th>
+            <th>
+                Số lượng
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaXe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenXe)
+                </td>
+                <td>
+                    @{
+                        string formattedPrice = string.Format("{0:N0} đ", item.GiaBan);
+                    }
+                    @formattedPrice
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.XuatXu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MauSac)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CDBaoHanh)
+                </td>
+                <td>
+                    <input type="number" name="SoLuong[@item.MaXe]" value="0" min="0" max="100" />
+                    <input type="hidden" name="MaXE[@item.MaXe]" value="@item.MaXe" />
+                    <input type="hidden" name="GiaXE[@item.MaXe]" value="@item.GiaBan" />
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <input type="submit" value="Tiếp tục" class="btn" id="submitButton" />
+}
+<script>
+    $(document).ready(function() {
+        $("#chonXeForm").submit(function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get form data and convert it to a serialized string
+            var formData = $(this).serialize();
+
+            // Send AJAX request to the server
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("ChonXe", "Product")",
+                data: formData,
+                success: function(result) {
+                    // Handle the response from the server, if needed
+                    console.log("Form submitted successfully!");
+                    console.log(result);
+                },
+                error: function(error) {
+                    // Handle any errors that occur during the AJAX request
+                    console.error("Error submitting form:", error);
+                }
+            });
+        });
+    });
+</script>

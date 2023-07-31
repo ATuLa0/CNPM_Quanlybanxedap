@@ -24,8 +24,6 @@ namespace CNPM_Quanlybanxedap.Models
         public int MaKH { get; set; }
         public string TenKH { get; set; }
         public string DiaChi { get; set; }
-        public string TenDN { get; set; }
-        public string Matkhau { get; set; }
         public string SoDienThoai { get; set; }
         public string Email { get; set; }
     

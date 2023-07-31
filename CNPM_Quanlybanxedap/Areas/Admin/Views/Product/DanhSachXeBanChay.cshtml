@@ -1,0 +1,125 @@
+﻿@model CNPM_Quanlybanxedap.Models.XeViewModel
+
+@{
+    ViewBag.Title = "ThongKeXe";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    /* Center the tables */
+    .table-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Style the tables */
+    .table {
+        width: 50%;
+        border-collapse: collapse;
+        border: 1px solid #ccc;
+        margin: 20px;
+    }
+
+        /* Style the table headers */
+        .table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Style the table cells */
+        .table td {
+            text-align: center;
+            padding: 8px;
+        }
+
+        /* Add alternating background color to table rows */
+        .table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+    /* Style the total number row */
+    .total-row {
+        font-weight: bold;
+    }
+
+        /* Add a bit of spacing above the total number row */
+        .total-row td {
+            padding-top: 20px;
+        }
+
+    /* Add a border to the tables */
+    .table-container > table {
+        border: 1px solid #ccc;
+    }
+
+    /* Center the total number row */
+    .total-row {
+        text-align: center;
+    }
+
+    /* Add some margin to the headings */
+    h2 {
+        margin-top: 30px;
+        text-align: center;
+    }
+</style>
+
+<h2>Top 5 xe bán chạy nhất</h2>
+<div class="table-container">
+    <table class="table">
+        <!-- Hiển thị bảng danh sách 5 xe bán chạy -->
+        <tr>
+            <th>Mã xe</th>
+            <th>Tên xe</th>
+            <th>Giá</th>
+            <th>Xuất xứ</th>
+            <th>Màu sắc</th>
+            <th>Đã bán</th>
+        </tr>
+        @foreach (var xe in Model.Top5XeBanChay)
+        {
+            <tr>
+                <td>@xe.MaXe</td>
+                <td>@xe.TenXe</td>
+                <td>@(string.Format("{0:N0} đ", xe.GiaBan))</td>
+                <td>@xe.XuatXu</td>
+                <td>@xe.MauSac</td>
+                <td>
+                    @Model.SoLuongBanForEachXe[xe.MaXe]
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<h2>Danh sách xe nằm ngoài top 5</h2>
+<div class="table-container">
+    <table class="table">
+        <!-- Hiển thị bảng danh sách xe nằm ngoài top 5 -->
+        <tr>
+            <th>Mã xe</th>
+            <th>Tên xe</th>
+            <th>Giá</th>
+            <th>Xuất xứ</th>
+            <th>Màu sắc</th>
+            <th>Đã bán</th>
+        </tr>
+        @foreach (var xe in Model.DanhSachXeNgoaiTop5)
+        {
+            <tr>
+                <td>@xe.MaXe</td>
+                <td>@xe.TenXe</td>
+                <td>@(string.Format("{0:N0} đ", xe.GiaBan))</td>
+                <td>@xe.XuatXu</td>
+                <td>@xe.MauSac</td>
+                <td>
+                    @Model.SoLuongBanForEachXeNgoaiTop5[xe.MaXe]
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<h2 class="total-row">Tổng số xe bán được: @Model.TongSoLuongBan</h2>

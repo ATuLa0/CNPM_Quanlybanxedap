@@ -46,5 +46,6 @@ namespace CNPM_Quanlybanxedap.Models
         public virtual ICollection<DANGKYBAOTRI> DANGKYBAOTRIs { get; set; }
         public virtual NHACUNGCAP NHACUNGCAP { get; set; }
         public virtual TONKHO TONKHO { get; set; }
+        public string TenNCC {get; set;}
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -46,12 +47,52 @@ namespace CNPM_Quanlybanxedap.Areas.Admin.Controllers
             return View(ncc);
         }
         [HttpPost]
-        public ActionResult EditProvider(int id, NHACUNGCAP ncc)
+        public ActionResult EditProvider(int id, NHACUNGCAP updatedProvider)
         {
-            db.Entry(ncc).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    // Kiểm tra xem nhà cung cấp có tồn tại trong cơ sở dữ liệu hay không
+                    var existingProvider = db.NHACUNGCAPs.Find(id);
+                    if (existingProvider != null)
+                    {
+                        // Cập nhật thông tin nhà cung cấp (trừ MaNCC)
+                        existingProvider.TenNCC = updatedProvider.TenNCC;
+                        existingProvider.DiaChi = updatedProvider.DiaChi;
+                        existingProvider.SoDienThoai = updatedProvider.SoDienThoai;
+                        existingProvider.Email = updatedProvider.Email;
+                        existingProvider.ThongTinMoTa = updatedProvider.ThongTinMoTa;
+
+                        // Cập nhật các thuộc tính khác tùy theo yêu cầu
+
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        // Nhà cung cấp không tồn tại trong cơ sở dữ liệu
+                        return HttpNotFound();
+                    }
+
+                    return RedirectToAction("Index");
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    // Xử lý khi có lỗi đồng thời cập nhật dữ liệu
+                    // Ví dụ: hiển thị thông báo lỗi hoặc tái tải dữ liệu từ cơ sở dữ liệu
+                    ModelState.AddModelError("", "Lỗi đồng thời cập nhật dữ liệu. Vui lòng thử lại.");
+                    return View(updatedProvider);
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý lỗi khác
+                    return Content("Lỗi: " + ex.Message);
+                }
+            }
+
+            return View(updatedProvider);
         }
+
         [HttpGet]
         public ActionResult DeleteProvider(int? id)
         {

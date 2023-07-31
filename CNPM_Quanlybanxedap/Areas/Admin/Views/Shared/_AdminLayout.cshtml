@@ -46,10 +46,10 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Quản lý bán xe</a>
+                        @Html.ActionLink("Quản lý bán xe", "Dathang", "Product", null, new { @class = "collapse-item" })
                         <a class="collapse-item" href="#">Lưu trữ hóa đơn</a>
                         <a class="collapse-item" href="#">Thống kê khách hàng mua</a>
-                        <a class="collapse-item" href="#">Thống kê xe bán nhiều nhất</a>
+                        @Html.ActionLink("Thống kê xe bán", "DanhSachXeBanChay", "Product", null, new { @class = "collapse-item" })
                     </div>
                 </div>
             </li>

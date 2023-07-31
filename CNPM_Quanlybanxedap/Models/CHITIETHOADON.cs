@@ -17,7 +17,6 @@ namespace CNPM_Quanlybanxedap.Models
         public int MaHD { get; set; }
         public int MaXE { get; set; }
         public Nullable<int> SoLuong { get; set; }
-        public Nullable<double> DonGia { get; set; }
     
         public virtual HOADON HOADON { get; set; }
         public virtual XE XE { get; set; }
