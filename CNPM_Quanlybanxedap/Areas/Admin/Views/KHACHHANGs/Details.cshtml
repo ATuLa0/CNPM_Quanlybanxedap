@@ -1,0 +1,38 @@
+﻿@model CNPM_Quanlybanxedap.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Details</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div>
+                <h4>KHACHHANG</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>@Html.DisplayNameFor(model => model.TenKH)</dt>
+                    <dd>@Html.DisplayFor(model => model.TenKH)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.DiaChi)</dt>
+                    <dd>@Html.DisplayFor(model => model.DiaChi)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.SoDienThoai)</dt>
+                    <dd>@Html.DisplayFor(model => model.SoDienThoai)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.Email)</dt>
+                    <dd>@Html.DisplayFor(model => model.Email)</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.MaKH }, new { @class = "btn btn-primary" })
+        |
+        @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-secondary" })
+    </p>
+</div>

@@ -129,7 +129,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HOADONsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KHACHHANGsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProviderController.cs" />
@@ -2178,6 +2180,11 @@
     <Content Include="Areas\Admin\Views\Product\DatHang.cshtml" />
     <Content Include="Areas\Admin\Views\Product\ChonXe.cshtml" />
     <Content Include="Areas\Admin\Views\Product\DanhSachXeBanChay.cshtml" />
+    <Content Include="Areas\Admin\Views\HOADONs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\HOADONs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\KHACHHANGs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\KHACHHANGs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\KHACHHANGs\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
