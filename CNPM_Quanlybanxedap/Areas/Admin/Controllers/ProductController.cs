@@ -163,9 +163,24 @@ namespace CNPM_Quanlybanxedap.Areas.Admin.Controllers
         {
             try
             {
+                if (cus == null)
+                {
+                    return Content("Dữ liệu không hợp lệ.");
+                }
+
+                // Kiểm tra các thuộc tính của cus xem có thuộc tính nào là null không
                 var existingCustomer = db.KHACHHANGs.FirstOrDefault(c => c.SoDienThoai == cus.SoDienThoai);
                 if (existingCustomer == null)
                 {
+                    var properties = cus.GetType().GetProperties();
+                    foreach (var property in properties)
+                    {
+                        var value = property.GetValue(cus);
+                        if (value == null)
+                        {
+                            return Content($"Thuộc tính {property.Name} không được để trống.");
+                        }
+                    }
                     db.KHACHHANGs.Add(cus);
                     db.SaveChanges();
 
@@ -182,11 +197,13 @@ namespace CNPM_Quanlybanxedap.Areas.Admin.Controllers
 
                 return RedirectToAction("ChonXe");
             }
-            catch
+            catch (Exception ex)
             {
-                return Content("Lỗi !!!");
+                // Xử lý ngoại lệ một cách thích hợp, ví dụ: ghi log, hiển thị thông báo lỗi
+                return Content("Đã xảy ra lỗi: " + ex.Message);
             }
         }
+
 
         public ActionResult ChonXe()
         {

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CNPM_Quanlybanxedap.Models.HOADON>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h2 class="text-center">Danh sách Hóa Đơn</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Ngày Tạo hóa đơn</th>
+                    <th>Tổng tiền</th>
+                    <th>Tên nhân viên</th>
+                    <th>Tên khách hàng</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.NgayTaoHD)</td>
+                        <td>@(string.Format("{0:N0} đ", item.TongTien))</td>
+                        <td>@Html.DisplayFor(modelItem => item.KHACHHANG.TenKH)</td>
+                        <td>@Html.DisplayFor(modelItem => item.NHANVIEN.TenNV)</td>
+                        <td>
+                            @Html.ActionLink("Chi tiết", "Details", new { id = item.MaHD }, new { @class = "btn btn-primary" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

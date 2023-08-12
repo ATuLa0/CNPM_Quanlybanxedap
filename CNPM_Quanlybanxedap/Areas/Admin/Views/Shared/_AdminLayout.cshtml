@@ -27,12 +27,13 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                    aria-expanded="true" aria-controls="collapseTwo">
-                    <span>Quản lý tài khoản</span>
+                    <span>Quản lý thông tin</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="#">Tài khoản nhân viên</a>
                         <a class="collapse-item" href="#">Tài khoản khách hàng</a>
+                        @Html.ActionLink("Thông tin khách hàng", "Index", "KHACHHANGs", null, new { @class = "collapse-item" })
                     </div>
                 </div>
             </li>
@@ -47,7 +48,7 @@
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         @Html.ActionLink("Quản lý bán xe", "Dathang", "Product", null, new { @class = "collapse-item" })
-                        <a class="collapse-item" href="#">Lưu trữ hóa đơn</a>
+                        @Html.ActionLink("Lưu trữ hóa đơn", "Index", "HOADONs", null, new { @class = "collapse-item" })
                         <a class="collapse-item" href="#">Thống kê khách hàng mua</a>
                         @Html.ActionLink("Thống kê xe bán", "DanhSachXeBanChay", "Product", null, new { @class = "collapse-item" })
                     </div>

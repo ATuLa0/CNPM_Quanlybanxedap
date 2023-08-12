@@ -4,54 +4,25 @@
     ViewBag.Title = "ThongKeXe";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
     /* Center the tables */
     .table-container {
         display: flex;
         justify-content: center;
+        padding: 20px;
     }
 
-    /* Style the tables */
+    /* Style the tables using Bootstrap classes */
     .table {
-        width: 50%;
-        border-collapse: collapse;
-        border: 1px solid #ccc;
-        margin: 20px;
+        width: 100%;
     }
-
-        /* Style the table headers */
-        .table th {
-            background-color: #f2f2f2;
-            font-weight: bold;
-            text-align: center;
-            padding: 10px;
-        }
-
-        /* Style the table cells */
-        .table td {
-            text-align: center;
-            padding: 8px;
-        }
-
-        /* Add alternating background color to table rows */
-        .table tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
 
     /* Style the total number row */
     .total-row {
         font-weight: bold;
-    }
-
-        /* Add a bit of spacing above the total number row */
-        .total-row td {
-            padding-top: 20px;
-        }
-
-    /* Add a border to the tables */
-    .table-container > table {
-        border: 1px solid #ccc;
+        text-align: center;
+        padding: 20px;
     }
 
     /* Center the total number row */
@@ -64,12 +35,23 @@
         margin-top: 30px;
         text-align: center;
     }
+
+    #pieChart {
+        max-width: 400px !important;
+        max-height: 400px !important;
+        margin: auto;
+    }
 </style>
 
-<h2>Top 5 xe bán chạy nhất</h2>
+<!-- Add Bootstrap CSS link -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<h2 class="mt-5">Biểu đồ thể hiện top 5 bán chạy</h2>
+<canvas id="pieChart" width="400" height="400"></canvas>
+
+<h2 class="mt-5">Top 5 xe bán chạy nhất</h2>
 <div class="table-container">
-    <table class="table">
-        <!-- Hiển thị bảng danh sách 5 xe bán chạy -->
+    <table class="table table-striped">
         <tr>
             <th>Mã xe</th>
             <th>Tên xe</th>
@@ -86,18 +68,15 @@
                 <td>@(string.Format("{0:N0} đ", xe.GiaBan))</td>
                 <td>@xe.XuatXu</td>
                 <td>@xe.MauSac</td>
-                <td>
-                    @Model.SoLuongBanForEachXe[xe.MaXe]
-                </td>
+                <td>@Model.SoLuongBanForEachXe[xe.MaXe]</td>
             </tr>
         }
     </table>
 </div>
 
-<h2>Danh sách xe nằm ngoài top 5</h2>
+<h2 class="mt-5">Danh sách các xe còn lại</h2>
 <div class="table-container">
-    <table class="table">
-        <!-- Hiển thị bảng danh sách xe nằm ngoài top 5 -->
+    <table class="table table-striped">
         <tr>
             <th>Mã xe</th>
             <th>Tên xe</th>
@@ -114,12 +93,45 @@
                 <td>@(string.Format("{0:N0} đ", xe.GiaBan))</td>
                 <td>@xe.XuatXu</td>
                 <td>@xe.MauSac</td>
-                <td>
-                    @Model.SoLuongBanForEachXeNgoaiTop5[xe.MaXe]
-                </td>
+                <td>@Model.SoLuongBanForEachXeNgoaiTop5[xe.MaXe]</td>
             </tr>
         }
     </table>
 </div>
 
-<h2 class="total-row">Tổng số xe bán được: @Model.TongSoLuongBan</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="total-row mt-5">Tổng số xe bán được: @Model.TongSoLuongBan</h2>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    var chartLabels = @Html.Raw(Json.Encode(Model.Top5XeBanChay.Select(x => x.TenXe)));
+    var chartData = @Html.Raw(Json.Encode(Model.SoLuongBanForEachXe.Select(x => x.Value)));
+
+    var ctx = document.getElementById('pieChart').getContext('2d');
+    var pieChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: chartLabels,
+            datasets: [{
+                data: chartData,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.7)',
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(255, 206, 86, 0.7)',
+                    'rgba(75, 192, 192, 0.7)',
+                    'rgba(153, 102, 255, 0.7)',
+                ],
+            }],
+        },
+        options: {
+            responsive: true,
+        }
+    });
+</script>

@@ -1,0 +1,69 @@
+﻿@model CNPM_Quanlybanxedap.Models.HOADON
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Thông tin hóa đơn</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Ngày Tạo Hóa Đơn</th>
+                            <td>@Html.DisplayFor(model => model.NgayTaoHD)</td>
+                        </tr>
+                        <tr>
+                            <th>Tổng Tiền</th>
+                            <td>@(string.Format("{0:N0} đ", Model.TongTien))</td>
+                        </tr>
+                        <tr>
+                            <th>Tên Khách Hàng</th>
+                            <td>@Html.DisplayFor(model => model.KHACHHANG.TenKH)</td>
+                        </tr>
+                        <tr>
+                            <th>Tên Nhân Viên</th>
+                            <td>@Html.DisplayFor(model => model.NHANVIEN.TenNV)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Danh sách sản phẩm có trong hóa đơn</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Tên Xe</th>
+                            <th>Số Lượng</th>
+                            <!-- Các cột khác của bảng CHITIETHOADON -->
+                        </tr>
+                        @foreach (var item in ViewBag.ChiTietHoaDon)
+                        {
+                            <tr>
+                                <td>@item.XE.TenXe</td>
+                                <td>@item.SoLuong</td>
+                                <!-- Các cột khác của bảng CHITIETHOADON -->
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col">
+            <p>
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+            </p>
+        </div>
+    </div>
+</div>
